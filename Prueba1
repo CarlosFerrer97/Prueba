@@ -1,0 +1,117 @@
+#include <stdio.h>
+#include <locale.h>
+void exercici1();
+void exercici2();
+void exercici3();
+
+int main(int argc, char *argv[])
+{
+	setlocale(LC_ALL, "");
+	int a;
+	printf("Escull el exercici: \n");
+	printf ("Prem 1 per l'exercici 1. \n");
+	printf ("Prem 2 per l'exercici 2. \n");
+	printf ("Prem 3 per l'exercici 3. \n");
+	scanf("%i", &a);
+	switch(a)
+	{
+
+   	case 1: // EXERCICI 1
+		exercici1();
+		break;
+	
+   	case 2: // EXERCICI 2
+      	exercici2();
+      	break;
+
+	case 3: // EXERCICI 3
+ 	   	exercici3();
+     	break;
+    
+	}
+}
+
+
+void exercici1(){
+		char t;
+		fflush(stdin);
+		int h = 0, m = 0, s = 0;
+		printf("EXERCICI 1 \n");
+		printf("Entra l'opció (H o S): ");
+		scanf("%c",&t);
+		if (t != 'S' && t != 's' && t != 'H' && t != 'h') (printf("Error\n"));
+		if (t == 'H'||t == 'h'){
+			printf("Introdueix les hores: ");
+			scanf("%i",&h);
+			printf("Introdueix els minuts: ");
+			scanf("%i",&m);
+			s = h*3600 + m*60;
+			printf("Segons: %i\n",s);
+		}
+		if (t == 'S'||t == 's'){
+			printf("Introdueix els segons: ");
+			scanf("%i",&s);
+			h=s/3600;
+			m = (s-3600*h)/60;
+			s = s-3600*h-60*m;
+	
+			printf("Hores: %i \n", h);
+			printf("Minuts: %i \n", m);
+			printf("Segons: %i \n", s);
+		}
+
+}
+
+void exercici2(){
+	printf ("EXERCICI 2\n");
+		fflush(stdin);
+		char n;
+		int f;
+		printf("Introdueix un valor (entre 0-9 o .): ");
+		scanf("%c",&n);
+	
+		if (n<58 && n>47 ){
+			f = n - 48;
+			f *= f;
+			printf("Resultat: %d en decimal, %o en octal i %x en hexadecimal\n", f, f, f);
+		}
+		if (n == 46){
+			float r;
+			printf("Entra un valor real: ");
+			scanf("%f", &r);
+			printf("El valor real entrat és: %f\n", r);
+		}
+
+		if (n>=58 || n<=47 && n!= 46){
+			printf("ERROR\n");
+		}
+}
+void exercici3(){
+	float examen1, examen2, examen3, mitjana;
+	fflush(stdin);
+		printf("Primer examen: ");
+		scanf ("%f", &examen1);
+		printf("Segon examen: ");
+		scanf ("%f", &examen2);
+		printf("Tercer examen: ");
+		scanf ("%f", &examen3);
+
+		if (examen1<0 || examen1>10 || examen2<0 || examen2>10 || examen3<0 || examen3>10){
+			printf ("\nError. Valors fora de rang. \n");
+		}
+		else{
+			mitjana = (examen1 + examen2 + examen3) / 3;
+			printf("La teva mitjana és: %5.3f \n", mitjana);
+
+			if (mitjana < 5){
+				printf("Suspès\n");
+			}
+			if (mitjana >=5 && mitjana <7){
+				printf("Bé\n");
+			}
+			if (mitjana >= 7){
+				printf("Excel·lent\n"); 
+			}
+
+		}
+}
